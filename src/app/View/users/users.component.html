@@ -1,0 +1,19 @@
+<h1>Olá, {{this.userInfo!.name}}</h1>
+<a [routerLink]="['/']">Voltar para a home</a>
+<p>Caso deseje alterar suas informações, edite-as no formulário abaixo e então clique em <strong>Salvar alteração</strong></p>
+<form action="" id="form-update" class="form">
+  <input type="text" placeholder="Nome: " id="name" #name value="{{this.userInfo!.name}}">
+  <input type="email" placeholder="E-mail:" id="useremail" #useremail value="{{this.userInfo!.email}}">
+  <button type="submit"
+    (click) = "
+      this.putUser({
+          name: name.value,
+          email: useremail.value
+        },
+        this.userInfo!
+      );
+    "
+  >
+    Salvar alteração
+  </button>
+</form>

@@ -1,0 +1,5 @@
+<h1>Olá, {{this.userInfo!.name}}</h1>
+<p>Estamos listando abaixo, suas tarefas cadastradas: </p>
+<button (click)="auth.logout()">Logout</button>
+<a [routerLink]="['/user', this.userInfo!.id]">Editar informações</a>
+<app-tasks userId="{{this.userId}}"></app-tasks>

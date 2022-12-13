@@ -1,0 +1,47 @@
+<hr />
+
+<h2>Cadastrar tarefa:</h2>
+<form action="">
+  <input type="text" id="taskname" #taskname />
+  <button type="submit" (click)="this.postTasks(taskname.value)">Salvar</button>
+</form>
+
+<hr />
+
+<div *ngIf="!editTask">
+  <h2>Tarefas:</h2>
+  <table>
+    <tr>
+      <th colspan="3">Tarefas</th>
+    </tr>
+    <tr>
+      <th>Nome</th>
+      <th>Editar</th>
+      <th>Excluir</th>
+    </tr>
+    <tr *ngFor="let task of this.getAllTasks(); index as i">
+      <td>{{ task.name }}</td>
+      <td (click)="this.changeTask(task.id!)">
+        <i class="fa-solid fa-pencil"></i>
+      </td>
+      <td (click)="[this.deleteTask(task.id!)]">
+        <i class="fa-solid fa-trash"></i>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="editTask">
+  <h2>Alterar tarefa:</h2>
+  <form action="">
+    <input type="text" value="{{ this.taskToEdit!.name }}" #taskname>
+    <button type="submit" (click)="
+      this.putTasks(
+        taskname.value,
+        this.taskToEdit!
+      )
+    ">
+      Alterar
+    </button>
+  </form>
+</div>

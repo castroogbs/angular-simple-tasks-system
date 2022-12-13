@@ -1,0 +1,35 @@
+<form action="" id="form-login" class="form" *ngIf="!auth.newUser">
+  <input type="text" placeholder="Nome: " id="username" #username>
+  <input type="password" placeholder="Senha: " id="password" #password>
+  <button type="submit"
+    (click) = "
+      auth.postLogin({
+        username: username.value,
+        password: password.value
+      });
+    "
+  >
+    Enviar
+  </button>
+</form>
+
+<form action="" id="form-register" class="form" *ngIf="auth.newUser">
+  <input type="text" placeholder="Nome: " id="name" #name>
+  <input type="email" placeholder="E-mail:" id="useremail" #useremail>
+  <input type="password" placeholder="Senha: " id="password" #password>
+  <button type="submit"
+    (click) = "
+      auth.postRegister({
+        name: name.value,
+        email: useremail.value,
+        password: password.value
+      });
+    "
+  >
+    Cadastrar
+  </button>
+</form>
+
+<button (click)="[auth.newUser = !auth.newUser]">
+  {{auth.newUser ? "Login" : "Registrar"}}
+</button>

@@ -1,0 +1,13 @@
+<div *ngIf="auth.userLogged === ''">
+  <header></header>
+  <main>
+    <div>
+      <app-form newUser="true" ></app-form>
+    </div>
+  </main>
+  <footer></footer>
+</div>
+
+<div *ngIf="auth.userLogged !== ''">
+  <router-outlet></router-outlet>
+</div>
